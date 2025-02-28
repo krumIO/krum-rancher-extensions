@@ -7,7 +7,6 @@ plugin:
   noAuth: false
   metadata:
     catalog.cattle.io/rancher-version: ">= 2.10.0-0 < 2.11.0-0"
-    catalog.cattle.io/kube-version: ">= v1.16.0-0 < v1.31.0-0"
     catalog.cattle.io/display-name: "Krum Platform Tools: App Launcher"
     catalog.cattle.io/ui-version: ">= 2.10.0-0 < 2.11.0-0"
     catalog.cattle.io/ui-extension-version: ">= 3.0.0"
