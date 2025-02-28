@@ -1,0 +1,20 @@
+annotations:
+  catalog.cattle.io/certified: rancher
+  catalog.cattle.io/kube-version: '>= v1.16.0-0 < v1.31.0-0'
+  catalog.cattle.io/namespace: cattle-ui-plugin-system
+  catalog.cattle.io/os: linux
+  catalog.cattle.io/permits-os: linux, windows
+  catalog.cattle.io/rancher-version: '>= 2.10.0-0 < 2.11.0-0'
+  catalog.cattle.io/scope: management
+  catalog.cattle.io/ui-component: plugins
+  catalog.cattle.io/display-name: 'Krum Platform Tools: App Launcher'
+  catalog.cattle.io/ui-version: '>= 2.10.0-0 < 2.11.0-0'
+  catalog.cattle.io/ui-extension-version: '>= 3.0.0'
+apiVersion: v2
+appVersion: 0.2.0
+description: App Launcher extension for Rancher
+name: app-launcher
+type: application
+version: 0.2.0
+icon: >-
+  https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/main/pkg/app-launcher/icon.svg

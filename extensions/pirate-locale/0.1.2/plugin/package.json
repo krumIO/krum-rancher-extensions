@@ -5,7 +5,7 @@
   "private": false,
   "rancher": true,
   "engines": {
-    "node": ">=12"
+    "node": ">=20.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "5.0.8",
