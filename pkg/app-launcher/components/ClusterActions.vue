@@ -38,6 +38,7 @@ export default {
       <input
         :value="searchQuery"
         :placeholder="$store.getters['i18n/t']('appLauncher.filter')"
+
         @input="$emit('update:search-query', $event.target.value)"
       />
     </div>
@@ -90,56 +91,56 @@ export default {
 
 <style scoped>
 .cluster-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    position: fixed;
-    right: 5.8%;
-    top: 4.3rem;
-    z-index: 2;
-    padding-bottom: 0.425rem;
-    padding-right: 4.4rem;
-    background: inherit;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  right: 5.8%;
+  top: 4.3rem;
+  z-index: 2;
+  padding-bottom: 0.425rem;
+  padding-right: 4.4rem;
+  background: inherit;
 }
 
 .icon-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: var(--primary);
-    font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--primary);
+  font-size: 1.8rem;
 }
 
 .sort-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: none;
-    color: #555555;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: none;
+  color: #555555;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
 }
 
 .sort-label {
-    color: var(--primary);
-    font-size: 1rem;
-    cursor: pointer;
+  color: var(--primary);
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .sort-buttons {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .sort-button:hover {
-    color: var(--primary-hover);
+  color: var(--primary-hover);
 }
 
 .sort-button.active {
-    color: var(--primary);
+  color: var(--primary);
 }
 
 .search-input {

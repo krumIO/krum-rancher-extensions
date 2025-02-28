@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=12"
+    "node": ">=20.0.0"
   },
   "dependencies": {
-    "@rancher/components": "0.2.1-alpha.0",
-    "@rancher/shell": "0.5.3",
+    "@rancher/components": "^0.3.0-alpha.1",
+    "@rancher/shell": "^3.0.0",
     "@types/lodash": "4.14.184",
-    "core-js": "3.21.1",
+    "core-js": "3.25.3",
     "css-loader": "4.3.0"
   },
   "scripts": {
