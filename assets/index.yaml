@@ -8,6 +8,28 @@ entries:
       catalog.cattle.io/namespace: cattle-ui-plugin-system
       catalog.cattle.io/os: linux
       catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.10.0-0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+      catalog.cattle.io/ui-extensions-version: '>= 3.0.0 < 4.0.0'
+    apiVersion: v2
+    appVersion: 0.2.4
+    created: "2025-03-24T20:39:43.793499812Z"
+    description: App Launcher extension for Rancher
+    digest: 6c2414ccfc172cfd5cc007e6a38c19d0d0104c36beaec60a208e7ad1388ac580
+    icon: https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/main/pkg/app-launcher/icon.svg
+    name: app-launcher
+    type: application
+    urls:
+    - assets/app-launcher/app-launcher-0.2.4.tgz
+    version: 0.2.4
+  - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/display-name: 'Krum Platform Tools: App Launcher'
+      catalog.cattle.io/kube-version: '>= 1.16.0-0'
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
       catalog.cattle.io/rancher-version: '>= 2.10.0-0 < 2.11.0-0'
       catalog.cattle.io/scope: management
       catalog.cattle.io/ui-component: plugins
@@ -15,14 +37,14 @@ entries:
       catalog.cattle.io/ui-version: '>= 2.10.0-0 < 2.11.0-0'
     apiVersion: v2
     appVersion: 0.2.3
-    created: "2025-03-24T16:25:15.424611819Z"
+    created: "2025-03-24T16:11:05.321293101Z"
     description: App Launcher extension for Rancher
-    digest: afa37bc858f841f3d770b30f5e2998e58e009446824c95cc76d3d2882d96cdfd
+    digest: 1b87dd1d975c0d09ebfe29e308f19f3a1a4a3485e9ad2e0284bc671f87873f63
     icon: https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/main/pkg/app-launcher/icon.svg
     name: app-launcher
     type: application
     urls:
-    - assets/app-launcher/app-launcher-0.2.3.tgz
+    - https://github.com/krumIO/krum-rancher-extensions/releases/download/app-launcher-0.2.3/app-launcher-0.2.3.tgz
     version: 0.2.3
   - annotations:
       catalog.cattle.io/certified: rancher
@@ -684,9 +706,9 @@ entries:
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
     appVersion: 0.1.2
-    created: "2025-03-24T16:25:15.424838945Z"
+    created: "2025-03-24T20:39:43.793732304Z"
     description: pirate-locale plugin
-    digest: 40a370c98c9bdd1a103ffa442c5f334ea1ede819de35f02b47f4fcb065316794
+    digest: 904882023ecebb7cd13c46bcf59039afbb30a9ad3cee2f3e77fc3fcd78074363
     name: pirate-locale
     type: application
     urls:
@@ -711,4 +733,4 @@ entries:
     urls:
     - assets/pirate-locale/pirate-locale-0.1.1.tgz
     version: 0.1.1
-generated: "2025-03-24T16:25:15.423867694Z"
+generated: "2025-03-24T20:39:43.792379273Z"
