@@ -13,3 +13,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directories: 
+      - "/pkg/*"
+    schedule:
+      interval: "daily"
