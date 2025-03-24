@@ -42,25 +42,25 @@ export default {
 
 <style scoped lang="scss">
 .services-by-cluster-grid {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .cluster-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem 0;
-    background: var(--header-bg);
-    border-bottom: var(--header-border-size) solid var(--header-border);
-    height: var(--header-height);
-    position: sticky;
-    top: 0;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+  background: var(--header-bg);
+  border-bottom: var(--header-border-size) solid var(--header-border);
+  height: var(--header-height);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .favorite-icon {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 </style>

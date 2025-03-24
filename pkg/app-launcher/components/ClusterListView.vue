@@ -2,6 +2,7 @@
 import SortableTable from '@shell/components/SortableTable';
 import ButtonDropDown from '@shell/components/ButtonDropdown';
 import { isMaybeSecure } from '@shell/utils/url';
+import { ingressFullPath } from '@shell/models/networking.k8s.io.ingress';
 
 export default {
   name: 'ClusterListView',
@@ -38,13 +39,17 @@ export default {
 
           return {
             label: `${endpoint}${port.protocol === 'UDP' ? ' (UDP)' : ''}`,
-            value: `/k8s/clusters/${row.clusterId}/api/v1/namespaces/${row.metadata.namespace}/services/${endpoint}/proxy`,
+            value: `/k8s/clusters/${row.clusterId}/api/v1/namespaces/` + 
+              `${row.metadata.namespace}/services/${endpoint}/proxy`,
           };
         }) ?? []
       );
     },
     openLink(option) {
       window.open(option.value, '_blank');
+    },
+    ingressPath(row) {
+      return ingressFullPath(row, row?.spec?.rules?.[0]);
     },
   },
   emits: ['toggle-favorite'],
@@ -88,19 +93,39 @@ export default {
             <i :class="['icon', isFavorited(row, favoritedApps) ? 'icon-star' : 'icon-star-open']" />
           </button>
           <a
-            v-if="getEndpoints(row)?.length <= 1"
+            v-if="getEndpoints(row)?.length <= 1 && row.kind === 'Service'"
+            v-bind="{disabled: getEndpoints(row)?.length > 0 ? null : true}"
+            
             :href="getEndpoints(row)[0]?.value"
+            :title="getEndpoints(row)?.length === 0 ? t('appLauncher.noEndpointFoundForApp')
+                : t('appLauncher.launchEndpoint', {
+                  endpoint: getEndpoints(row)[0].label,
+                })"
+            
             target="_blank"
             rel="noopener noreferrer nofollow"
             class="btn role-primary"
           >
-            {{ t('appLauncher.launch') }}
+          {{ t('appLauncher.launch') }}
+          </a>
+          <a
+            v-else-if="row.kind === 'Ingress'"
+
+            :href="ingressPath(row)"
+
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="btn role-primary"
+          >
+          {{ t('appLauncher.launch') }}
           </a>
           <ButtonDropDown
             v-else
+ 
             :button-label="t('appLauncher.launch')"
             :dropdown-options="getEndpoints(row)"
             :title="t('appLauncher.launchAnEndpointFromSelection')"
+
             @click-action="openLink"
           />
         </div>
@@ -111,10 +136,22 @@ export default {
 
 <style scoped lang="scss">
 .cluster-list-view {
-    margin-bottom: 2rem;
-    .favorite-icon {
-        margin-right: 1rem;
-        background: none;
-    }
+  margin-bottom: 2rem;
+  .favorite-icon {
+    margin-right: 1rem;
+    background: none;
+  }
+}
+
+.cluster-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--header-bg);
+  height: var(--header-height);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 </style>

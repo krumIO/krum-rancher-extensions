@@ -60,7 +60,7 @@ Profit!
 
 ## Requirements
 
-The extensions and the Rancher Dashboard code are currently built with Node 16.
+The extensions and the Rancher Dashboard code are currently built with Node 20.
 
 We recommend managing node versions with [nvm](https://github.com/nvm-sh/nvm).
 
@@ -70,10 +70,10 @@ cd # project directory
 nvm install $(cat package.json | grep '\"node\": ' | grep -o '[0-9.]*')
 ```
 
-When using nvm, you can use the following command to switch to the correct node version:
+When using nvm, you can use the following command to switch to the correct Node version:
 
 ```sh
-  nvm use 16
+  nvm use 20
 ```
 
 <!-- verify if we actually need this.
@@ -106,7 +106,7 @@ You may encounter an error that appears like the following:
   code: 'ERR_OSSL_EVP_UNSUPPORTED' }
 ```
 
-If so, make sure you are using node 16. Those with NVM can use the following command to switch to node 16: `nvm use 16`.
+If so, make sure you are using Node 20. Those with NVM can use the following command to switch to Node 20: `nvm use 20`.
 
 ## Misc
 
