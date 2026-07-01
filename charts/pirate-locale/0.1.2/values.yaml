@@ -3,6 +3,10 @@ fullnameOverride: ""
 plugin:
   enabled: true
   versionOverride: ""
+  endpoint: >-
+    https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/gh-pages/extensions/pirate-locale/0.1.2
+  compressedEndpoint: >-
+    https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/gh-pages/extensions/pirate-locale/0.1.2.tgz
   noCache: false
   noAuth: false
   metadata: {}
