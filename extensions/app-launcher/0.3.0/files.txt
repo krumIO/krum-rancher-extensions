@@ -1,7 +1,7 @@
+plugin/app-launcher-0.3.0.umd.min.161.js
+plugin/app-launcher-0.3.0.umd.min.161.js.map
 plugin/app-launcher-0.3.0.umd.min.37.js
 plugin/app-launcher-0.3.0.umd.min.37.js.map
-plugin/app-launcher-0.3.0.umd.min.577.js
-plugin/app-launcher-0.3.0.umd.min.577.js.map
 plugin/app-launcher-0.3.0.umd.min.60.js
 plugin/app-launcher-0.3.0.umd.min.60.js.map
 plugin/app-launcher-0.3.0.umd.min.js
