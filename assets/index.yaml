@@ -12,15 +12,36 @@ entries:
       catalog.cattle.io/ui-component: plugins
       catalog.cattle.io/ui-extensions-version: '>= 3.0.0 < 4.0.0'
     apiVersion: v2
-    appVersion: 0.3.0
-    created: "2026-07-02T16:56:41.977706036Z"
+    appVersion: 0.3.1
+    created: "2026-07-02T19:46:06.221610794Z"
     description: App Launcher extension for Rancher
-    digest: 5ec9944f2de24117e3bcd6b461b47bde18dda36272739896df137c3d880e8acd
+    digest: 8de93dafd3cc76d157cb97e41ee6241e1766741ecccb404b620fa40741977b57
     icon: https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/main/pkg/app-launcher/icon.svg
     name: app-launcher
     type: application
     urls:
-    - assets/app-launcher/app-launcher-0.3.0.tgz
+    - assets/app-launcher/app-launcher-0.3.1.tgz
+    version: 0.3.1
+  - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/display-name: 'Krum Platform Tools: App Launcher'
+      catalog.cattle.io/namespace: cattle-ui-plugin-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux, windows
+      catalog.cattle.io/rancher-version: '>= 2.10.0-0'
+      catalog.cattle.io/scope: management
+      catalog.cattle.io/ui-component: plugins
+      catalog.cattle.io/ui-extensions-version: '>= 3.0.0 < 4.0.0'
+    apiVersion: v2
+    appVersion: 0.3.0
+    created: "2026-07-01T22:46:47.142517945Z"
+    description: App Launcher extension for Rancher
+    digest: cfe41995f50cef0290f4eedc11ca770d5275d653b6f8ccec45e62875eb6eed30
+    icon: https://raw.githubusercontent.com/krumIO/krum-rancher-extensions/main/pkg/app-launcher/icon.svg
+    name: app-launcher
+    type: application
+    urls:
+    - https://github.com/krumIO/krum-rancher-extensions/releases/download/app-launcher-0.3.0/app-launcher-0.3.0.tgz
     version: 0.3.0
   - annotations:
       catalog.cattle.io/certified: rancher
@@ -725,9 +746,9 @@ entries:
       catalog.cattle.io/ui-component: plugins
     apiVersion: v2
     appVersion: 0.1.2
-    created: "2026-07-02T16:56:41.977977297Z"
+    created: "2026-07-02T19:46:06.22183864Z"
     description: pirate-locale plugin
-    digest: 03d254b9b020d36786c6f875fd90b24279b634b5b1071b59398c5175304fa99d
+    digest: c3fcde63e7ff500cd59627a5b1009c84a6ddfa775e65d9a6d908a1b02ef3b213
     name: pirate-locale
     type: application
     urls:
@@ -752,4 +773,4 @@ entries:
     urls:
     - assets/pirate-locale/pirate-locale-0.1.1.tgz
     version: 0.1.1
-generated: "2026-07-02T16:56:41.977240742Z"
+generated: "2026-07-02T19:46:06.221179768Z"
