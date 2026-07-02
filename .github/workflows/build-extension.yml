@@ -13,6 +13,11 @@ env:
   ACTIONS_RUNNER_DEBUG: false
   CI_COMMIT_MESSAGE: CI Build Artifacts
 
+# Serialize releases so back-to-back merges don't race pushing to gh-pages.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 defaults:
   run:
     shell: bash
@@ -112,3 +117,58 @@ jobs:
         env:
           CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           CR_SKIP_EXISTING: true
+
+      # Annotate the freshly-created release with a changelog of the PRs merged
+      # since the previous release, plus a source diff link. Release tags point at
+      # gh-pages, so notes are built from main history (previous release -> HEAD).
+      - name: Update release notes with changelog
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          CUR_VER=$(gh api "repos/$REPO/contents/pkg/app-launcher/package.json?ref=$HEAD_SHA" \
+            --jq '.content' | base64 -d | jq -r '.version')
+          TAG="app-launcher-$CUR_VER"
+
+          if ! gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+            echo "No release $TAG created this run; nothing to annotate."
+            exit 0
+          fi
+
+          # Previous app-launcher release (by semver) bounds the changelog range.
+          PREV_TAG=$(gh release list --repo "$REPO" --limit 200 --json tagName \
+            --jq '.[].tagName | select(startswith("app-launcher-"))' \
+            | sort -V | grep -Fx -B1 "$TAG" | head -n1)
+
+          BASE_SHA=""
+          if [ -n "$PREV_TAG" ] && [ "$PREV_TAG" != "$TAG" ]; then
+            PREV_DATE=$(gh release view "$PREV_TAG" --repo "$REPO" --json createdAt --jq '.createdAt')
+            BASE_SHA=$(gh api "repos/$REPO/commits?sha=main&until=$PREV_DATE&per_page=1" --jq '.[0].sha // empty')
+          fi
+
+          {
+            echo "App Launcher extension for Rancher"
+            echo
+            echo "## What's Changed"
+          } > notes.md
+
+          if [ -n "$BASE_SHA" ]; then
+            gh api "repos/$REPO/compare/$BASE_SHA...$HEAD_SHA" --paginate \
+              --jq '.commits[].commit.message | split("\n")[0]
+                    | select(test("Merge pull request #[0-9]+"))
+                    | capture("Merge pull request #(?<n>[0-9]+)").n' \
+            | while read -r n; do
+                [ -n "$n" ] || continue
+                gh pr view "$n" --repo "$REPO" --json number,title,author \
+                  --jq '"* \(.title) by @\(.author.login) in #\(.number)"'
+              done | sed 's#@app/dependabot#@dependabot#' >> notes.md
+            echo >> notes.md
+            echo "**Full Changelog**: https://github.com/$REPO/compare/$BASE_SHA...$HEAD_SHA" >> notes.md
+          else
+            echo "* Initial release" >> notes.md
+          fi
+
+          echo "----- notes.md -----"; cat notes.md
+          gh release edit "$TAG" --repo "$REPO" --notes-file notes.md
