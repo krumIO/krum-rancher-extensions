@@ -9,8 +9,7 @@
     "@rancher/components": "^0.3.0-alpha.1",
     "@rancher/shell": "3.0.9",
     "@types/lodash": "4.17.24",
-    "core-js": "3.25.3",
-    "css-loader": "4.3.0"
+    "core-js": "3.25.3"
   },
   "scripts": {
     "dev": "NODE_ENV=dev ./node_modules/.bin/vue-cli-service serve",
