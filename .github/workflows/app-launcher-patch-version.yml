@@ -13,7 +13,7 @@ jobs:
         shell: bash
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Install Node.js
       - uses: actions/setup-node@v6
